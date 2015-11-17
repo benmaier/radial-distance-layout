@@ -134,7 +134,7 @@ def set_angular_positions(DG,n,dist_key):
             branches_insert, branch_masses = get_inversely_distributed_by_dist(branches, branch_dists)
             n_l = len(remaining_leaves)
             current_branchmass -= (len(leaves) - len(remaining_leaves))           
-            current_nodes = remaining_leaves[:n_l/2] + branches_insert + remaining_leaves[n_l/2:]
+            current_nodes = remaining_leaves[:n_l//2] + branches_insert + remaining_leaves[n_l//2:]
             #current_dists = leave_distsbranch_dists + leave_dists[lmark:]
             #current_nodes, current_dists = get_inversely_distributed_by_dist(current_nodes,current_dists)
             for c in current_nodes:
@@ -232,8 +232,6 @@ def radial_distance_layout(tree,dist_key,mode='soph',save_data_to_tree=False):
         return get_initial_positions(DG,dist_key)
 
 if __name__=="__main__":
-
-    import pylab as pl
 
     paths  = [ [ 'a','b','c'] ]
     paths += [ [ 'a','b','d'] ]
