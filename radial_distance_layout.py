@@ -157,8 +157,8 @@ def set_angular_positions(DG,n,dist_key):
                 if len(leaves_of_branch[ib])==2:
                     print(leaves_of_branch[ib])
                     print(len(leaves_of_branch[ib]))
-                    print("position: ", len(leaves_of_branch[ib])/2)
-                leaves_of_branch[ib].insert(len(leaves_of_branch[ib])/2,b)
+                    print("position: ", len(leaves_of_branch[ib])//2)
+                leaves_of_branch[ib].insert(len(leaves_of_branch[ib])//2,b)
                 if len(leaves_of_branch[ib])==3:
                     print(leaves_of_branch[ib])
 
