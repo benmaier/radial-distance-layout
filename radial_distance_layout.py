@@ -155,12 +155,12 @@ def set_angular_positions(DG,n,dist_key):
                 leaves_of_branch[ib], dists = get_inversely_distributed_by_dist(leaves_of_branch[ib],dists)
                 
                 if len(leaves_of_branch[ib])==2:
-                    print leaves_of_branch[ib]
-                    print len(leaves_of_branch[ib])
-                    print "position: ", len(leaves_of_branch[ib])/2
+                    print(leaves_of_branch[ib])
+                    print(len(leaves_of_branch[ib]))
+                    print("position: ", len(leaves_of_branch[ib])/2)
                 leaves_of_branch[ib].insert(len(leaves_of_branch[ib])/2,b)
                 if len(leaves_of_branch[ib])==3:
-                    print leaves_of_branch[ib]
+                    print(leaves_of_branch[ib])
 
                 n_l = len(leaves_of_branch[ib])
            
