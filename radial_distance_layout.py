@@ -11,8 +11,10 @@ def get_cartesian(r,phi):
 
 def set_intervals(DG,n):
     if n == DG.graph['root']:
-        DG.node[n]['lowerbound'] = pi/12.
-        DG.node[n]['upperbound'] = pi-pi/12.
+        DG.node[n]['lowerbound'] = 0
+        DG.node[n]['upperbound'] = 2*pi
+        #DG.node[n]['lowerbound'] = pi/12.
+        #DG.node[n]['upperbound'] = pi-pi/12.
         DG.node[n]['position'] = 0 
 
     if DG.node[n]['branchmass']>1:
@@ -212,12 +214,11 @@ def get_sophisticated_positions(DG,root,dist_key):
 
     #positions[root] = (0,pi)    
     return positions 
-    return positions 
 
 
-def radial_distance_layout(tree,dist_key,mode='soph',save_data=False):    
+def radial_distance_layout(tree,dist_key,mode='soph',save_data_to_tree=False):    
     
-    if save_data:
+    if save_data_to_tree:
         DG = tree
     else:    
         DG = nx.DiGraph(tree)
@@ -229,6 +230,39 @@ def radial_distance_layout(tree,dist_key,mode='soph',save_data=False):
         return get_sophisticated_positions(DG,root,dist_key)
     else:
         return get_initial_positions(DG,dist_key)
+
+if __name__=="__main__":
+
+    import pylab as pl
+
+    paths  = [ [ 'a','b','c'] ]
+    paths += [ [ 'a','b','d'] ]
+    paths += [ [ 'a','e','f','g'] ]
+    paths += [ [ 'a','e','f','h'] ]
+    paths += [ [ 'a','e','i'] ]
+    paths += [ [ 'a','j','k'] ]
+    paths += [ [ 'a','j','l'] ]
+
+    dists = {'a': 0, 
+             'b':1.1, 'e': 1.2, 'j': 1.4,
+             'c':2.1, 'd': 2.2, 'f': 2.1, 'i': 2.34, 'k':3.8, 'l':2.5,
+             'g': 3.9, 'h': 3.8}
+    T = nx.DiGraph()
+
+    for p in paths:
+        T.add_path(p)
+
+    keystr = 'dist'
+
+    nx.set_node_attributes(T,keystr,dists)
+
+    fig,ax = pl.subplots(1,2,figsize=(15,8))
+
+    pos = radial_distance_layout(T,keystr,mode='soph')
+    nx.draw_networkx(T,pos,ax=ax[0])
+    pos = radial_distance_layout(T,keystr,mode='normal')
+    nx.draw_networkx(T,pos,ax=ax[1])
+    pl.show()
 
 
 
