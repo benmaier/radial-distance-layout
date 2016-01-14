@@ -32,6 +32,8 @@ dists = {'a': 0,
          'b':1.1, 'e': 1.2, 'j': 1.4,
          'c':2.1, 'd': 2.2, 'f': 2.1, 'i': 2.34, 'k':3.8, 'l':2.5,
          'g': 3.9, 'h': 3.8}
+
+#The Tree has to be a DiGraph!
 T = nx.DiGraph()
 
 for p in paths:
