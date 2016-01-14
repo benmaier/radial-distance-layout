@@ -33,7 +33,7 @@ dists = {'a': 0,
          'c':2.1, 'd': 2.2, 'f': 2.1, 'i': 2.34, 'k':3.8, 'l':2.5,
          'g': 3.9, 'h': 3.8}
 
-#The Tree has to be a DiGraph!
+#The Tree has to be a DiGraph! The root is always the one with distance 0.
 T = nx.DiGraph()
 
 for p in paths:
