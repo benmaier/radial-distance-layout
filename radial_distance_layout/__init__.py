@@ -1,5 +1,4 @@
 import networkx as nx
-import pylab as pl
 from numpy import *
 from numpy import random
 
@@ -232,6 +231,8 @@ def radial_distance_layout(tree,dist_key,mode='soph',save_data_to_tree=False):
         return get_initial_positions(DG,dist_key)
 
 if __name__=="__main__":
+
+    import pylab as pl
 
     paths  = [ [ 'a','b','c'] ]
     paths += [ [ 'a','b','d'] ]
