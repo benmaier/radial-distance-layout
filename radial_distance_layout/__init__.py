@@ -218,7 +218,7 @@ def get_sophisticated_positions(DG,root,dist_key):
     return positions 
 
 
-def radial_distance_layout(tree,dist_key,mode='soph',save_data_to_tree=False):    
+def radial_distance_layout(tree,dist_key,mode='normal',save_data_to_tree=False):    
     
     if save_data_to_tree:
         DG = tree
