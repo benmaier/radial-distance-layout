@@ -20,7 +20,7 @@ def set_intervals(DG,n):
         current_branchmass = 0.
         current_lowerbound = DG.node[n]['lowerbound']
         intervallength = DG.node[n]['upperbound'] - DG.node[n]['lowerbound'] 
-        children = DG.successors(n)
+        children = list(DG.successors(n))
         for c in children:
             current_branchmass += DG.node[c]['branchmass']
         for i in range(len(children)):
@@ -203,8 +203,11 @@ def get_sophisticated_positions(DG,root,dist_key):
     #print "hello"
     set_angular_positions(DG,root,dist_key)
     positions = {}
-    nodes = DG.nodes()
+    nodes = list(DG.nodes())
+    print(nodes)
+    print(DG.nodes['b'])
     for i in nodes:
+        print(i)
         positions[i] = tuple(get_cartesian(DG.node[i][dist_key],
                                            DG.node[i]['position'])
                             )
@@ -253,12 +256,12 @@ if __name__=="__main__":
 
     keystr = 'dist'
 
-    nx.set_node_attributes(T,keystr,dists)
+    nx.set_node_attributes(T,dists,keystr)
 
     fig,ax = pl.subplots(1,2,figsize=(15,8))
 
-    pos = radial_distance_layout(T,keystr,mode='soph')
-    nx.draw_networkx(T,pos,ax=ax[0])
+    #pos = radial_distance_layout(T,keystr,mode='soph')
+    #nx.draw_networkx(T,pos,ax=ax[0])
     pos = radial_distance_layout(T,keystr,mode='normal')
     nx.draw_networkx(T,pos,ax=ax[1])
     pl.show()
