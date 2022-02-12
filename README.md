@@ -37,7 +37,7 @@ dists = {'a': 0,
 T = nx.DiGraph()
 
 for p in paths:
-    T.add_path(p)
+    nx.add_path(T, p)
 
 keystr = 'dist'
 
